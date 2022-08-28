@@ -7,8 +7,8 @@
 
 (define-syntax-parser make-named-vat
   [(_ name:id)
-   (with-syntax ([vat-name (format-id #'name "~a-vat" #'name)]
-                 [run-name (format-id #'name "~a-run" #'name)])
+   (with-syntax ([vat-name (format-id #'name #:source #'name #:props #'name "~a-vat" #'name)]
+                 [run-name (format-id #'name #:source #'name #:props #'name "~a-run" #'name)])
      #'(begin (define vat-name (make-vat))
               (define-vat-run run-name vat-name)))])
 
